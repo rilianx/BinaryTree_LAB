@@ -103,7 +103,7 @@ Además se usa un árbol como el de la figura (sólo se muestran las claves) ini
 
 
 
-[Revise las diapositivas](https://docs.google.com/presentation/d/1KXoJLL5XZsXgprXxIs-0zaWq-6i0tVbPa5kOIZQKbSU/edit#slide=id.p) si necesita más detalles para implementar las operaciones. También puede consultar el capítulo 12 del libro [Introduction to Algorithms](https://drive.google.com/file/d/0B9JSHx01XN1rRGwyTHowaEJnLUE/view?usp=sharing).
+[Revise las diapositivas](https://docs.google.com/presentation/d/1KXoJLL5XZsXgprXxIs-0zaWq-6i0tVbPa5kOIZQKbSU/edit#slide=id.p) si necesita más detalles para implementar las operaciones. También puede consultar el capítulo 12 del libro **Introduction to Algorithms**.
 
 
 1.- Implemente la función *createTreeMap*, la cual recibe la función de comparación de claves y crea un mapa (TreeMap) inicializando sus variables. 

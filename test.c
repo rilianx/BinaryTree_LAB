@@ -265,8 +265,7 @@ void ub_test4(TreeMap* tree){
     else printf("(null)\n");
 }
 
-int main() {
-
+int main( int argc, char *argv[] ) {
     TreeMap * tree = (TreeMap *)malloc(sizeof(TreeMap));
     tree->lower_than = lower_than_int;
     Palabra* p=creaPalabra(5239,"auto");
@@ -281,40 +280,35 @@ int main() {
     tree->root->left=createTreeNode(&p->id, p);
     tree->root->left->parent=tree->root;
 
-    printf("create_tests\n");
-    create_test1(); //10 es menor que 15
-
-    printf("search tests:\n");
-    search_test1(tree); //5239: auto
-    search_test2(tree); //8213: rayo
-    search_test3(tree); //6980: hoja
-    search_test4(tree); //clave no existe
-
-    printf("insert tests:\n");
-    insert_test1(tree);
-    insert_test2(tree);
-
-    printf("erase tests:\n");
-    erase_test1();
-    erase_test2();
-    erase_test3();
-
-    printf("first-next tests:\n"); //requiere insert y search
-    first_test1(tree); //1273: reto
-    first_test2(tree); //100: first_word
-    next_test1(tree); 
-    next_test2(tree);
-    next_test3(tree);
-    next_test4(tree);
-    next_test5(tree);
-
-    printf("ub_tests:\n");
-    ub_test1(tree);
-    ub_test2(tree);
-    ub_test3(tree);
-    ub_test4(tree);
-
-    printf("fin\n");
+    if(strcmp(argv[1],"create")==0){
+        create_test1(); //10 es menor que 15
+    }else if(strcmp(argv[1],"search")==0){
+        search_test1(tree); //5239: auto
+        search_test2(tree); //8213: rayo
+        search_test3(tree); //6980: hoja
+        search_test4(tree); //clave no existe
+    }else if(strcmp(argv[1],"insert")==0){
+        insert_test1(tree);
+        insert_test2(tree);
+    }else if(strcmp(argv[1],"erase")==0){
+        erase_test1();
+        erase_test2();
+        erase_test3();
+    }else if(strcmp(argv[1],"first")==0){
+        first_test1(tree); //1273: reto
+        first_test2(tree); //100: first_word
+    }else if(strcmp(argv[1],"next")==0){
+        next_test1(tree); 
+        next_test2(tree);
+        next_test3(tree);
+        next_test4(tree);
+        next_test5(tree);
+    }else if(strcmp(argv[1],"ub")==0){
+        ub_test1(tree);
+        ub_test2(tree);
+        ub_test3(tree);
+        ub_test4(tree);
+    }
 
     return 0;
 }
