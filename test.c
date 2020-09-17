@@ -30,7 +30,16 @@ int lower_than_int(void* key1, void* key2){
 void create_test1(){
     TreeMap* t = createTreeMap(lower_than_int);
 
-    if(t->root!=NULL) printf("error: root debe ser NULL");
+    if(t==NULL) {
+        fprintf(stderr,"error: createTreeMap debe retornar el mapa");
+        exit(-1);
+    }
+
+    if(t->root!=NULL){
+        fprintf(stderr,"error: root debe ser NULL\n");
+        exit(-1);
+    } 
+
     int i=10,j=15;
     if(t->lower_than(&i,&j)) printf("%d es menor que %d\n",i,j);
 }
