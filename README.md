@@ -101,7 +101,7 @@ Además se usa un árbol como el de la figura (sólo se muestran las claves) ini
 
 ![image](treesearch.png)
 
-
+Las pruebas/tests se encuentran en el archivo *test.c*
 
 [Revise las diapositivas](https://docs.google.com/presentation/d/1KXoJLL5XZsXgprXxIs-0zaWq-6i0tVbPa5kOIZQKbSU/edit#slide=id.p) si necesita más detalles para implementar las operaciones. También puede consultar el capítulo 12 del libro **Introduction to Algorithms**.
 
@@ -213,3 +213,45 @@ Para verificar que su código esté correcto puede ejecutar el siguiente test:
 
     gcc test.c; .\a.exe ub
 
+Ya implementó todas las funcionalides del TDA Mapa ordenado. Puede ver si pasa todos los tests ejecutando el siguiente comando:
+
+    gcc test.c; .\a.exe
+
+Ahora ya puede comenzar a utilizar su mapa. Para partir puede crear un archivo *main.c* con un código como el siguiente:
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include "treemap.h"
+
+    int lower_than_string(void* key1, void* key2){
+        char* k1=(char*) key1;
+        char* k2=(char*) key2;
+        if(strcmp(k1,k2)<0) return 1;
+        return 0;
+    }
+
+    int main(){
+        TreeMap* map = createTreeMap(lower_than_string);
+        char words[9][5] = {"saco","cese","case","cosa",
+        "casa","cesa","cose","seco","saca"};
+
+        int i=0;
+        for(;i<9; i++){
+            insertTreeMap(map,_strdup(words[i]),_strdup(words[i]));
+        }
+
+        char* aux= firstTreeMap(map);
+        while(aux!=NULL){
+            printf("%s\n", aux);
+            aux=nextTreeMap(map);
+        }
+
+    }
+
+Luego para compilar y ejecutar:
+
+    gcc main.c treemap-answer.c
+    .\a.exe 
+
+Y voilá!
