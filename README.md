@@ -25,11 +25,11 @@ El árbol binario de búsqueda *ordena los datos usando las claves*, por lo tant
 
     int(*lower_than) (void* key1, void* key2);
 
-El nombre de la función es *lower_than*, recibe dos parámetros (las claves) y retorna un entero (1 si key1$<$key2 y 0 si no).
+El nombre de la función es *lower_than*, recibe dos parámetros (las claves) y retorna un entero (1 si key1<key2 y 0 si no).
 
 En el main, para crear un mapa deberemos pasar una función para comparar sus claves. Por ejemplo, si estamos creando un mapa con claves de tipo entero deberíamos hacer lo siguiente:
     
-    //definimos una función para comparar claves de tipo int
+    /* definimos una función para comparar claves de tipo int */
     int lower_than_int(void* key1, void* key2){
         int k1 = *((int*) (key1));
         int k2 = *((int*) (key2));
@@ -37,7 +37,7 @@ En el main, para crear un mapa deberemos pasar una función para comparar sus cl
     }
 
     int main(){
-        //creamos el mapa pasando la función
+        /*creamos el mapa pasando la función. */
         TreeMap* map = TreeMap(lower_than_int);
         ...
     }
@@ -59,7 +59,7 @@ Puede usar la siguiente función para crear nodos del árbol.
 Para utilizar la función *lower_than* de un mapa, debe hacerlo de la siguiente manera (asumiendo que la variable TreeMap* map está definida):
 
     int resultado = map->lower_than(key1,key2);
-Esta función retorna 1 si key1$<$key2. 
+Esta función retorna 1 si key1<key2. 
 
 También puede usar la siguiente función para saber si dos claves son iguales. 
 
@@ -202,7 +202,7 @@ Para verificar que su código esté correcto puede ejecutar el siguiente test:
 
 
 7.- La función void* upperBound(TreeMap* tree, void* key) retorna el **valor** con clave igual a key. En caso de no encontrarlo retorna el primer valor asociado a una clave mayor o igual a key. 
-Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo auxiliar $ub\_node$ que vaya guardando el nodo con la menor clave *mayor o igual a key*. Finalmente retorne el valor del nodo $ub\_node$.
+Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo auxiliar ub_node que vaya guardando el nodo con la menor clave *mayor o igual a key*. Finalmente retorne el valor del nodo ub\_node.
 
     void* upperBound(TreeMap* tree, void* key){
         

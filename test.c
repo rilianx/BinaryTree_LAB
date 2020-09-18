@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "treemap-answer.c"
+#include "treemap.c"
 
 char * _strdup(const char * str) {
     char * aux = (char *)malloc(strlen(str) + 1);
@@ -12,13 +12,13 @@ char * _strdup(const char * str) {
 char msg[100];
 
 void err_msg(char* msg){
-    fprintf(stderr,"[\033[1;31m FAILED \033[0m] ");
+    fprintf(stderr,"[ FAILED ] ");
     fprintf(stderr,"%s\n",msg);
     exit(-1);
 }
 
 void ok_msg(char* msg){
-    printf ("[\033[32;1m OK \033[0m] ");
+    printf ("[ OK ] ");
     printf("%s\n",msg);
 }
 
