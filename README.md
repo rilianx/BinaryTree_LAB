@@ -106,8 +106,8 @@ Además se usa un árbol como el de la figura (sólo se muestran las claves) ini
 [Revise las diapositivas](https://docs.google.com/presentation/d/1KXoJLL5XZsXgprXxIs-0zaWq-6i0tVbPa5kOIZQKbSU/edit#slide=id.p) si necesita más detalles para implementar las operaciones. También puede consultar el capítulo 12 del libro **Introduction to Algorithms**.
 
 
-1.- Implemente la función *createTreeMap*, la cual recibe la función de comparación de claves y crea un mapa (TreeMap) inicializando sus variables. 
-El código de respuesta muestra como inicializar la función de comparación. Reserve memoria, inicialice el resto de variables y retorne el mapa.
+1.- Implemente la función *createTreeMap* en el archivo treemap.c. Esta función recibe la función de comparación de claves y crea un mapa (TreeMap) inicializando sus variables. 
+El siguiente código muestra como inicializar la función de comparación. Reserve memoria, inicialice el resto de variables y retorne el mapa.
 
     TreeMap * createTreeMap(int (*lt) (void* key1, void* key2)) {
 
@@ -115,7 +115,11 @@ El código de respuesta muestra como inicializar la función de comparación. Re
         //map->lower_than = lt;
         return NULL;
     }
-    
+
+Para verificar que su código esté correcto puede ejecutar el siguiente test:
+
+    gcc test.c; .\a.exe create
+
 
 2.- Implemente la función void* searchTreeMap(TreeMap* tree, void* key), la cual busca el nodo con clave igual a key y retorna el **valor** asociado al nodo. Si no se encuentra la clave retorna NULL.
 Recuerde hacer que el current apunte al nodo encontrado.
@@ -126,7 +130,11 @@ Recuerde hacer que el current apunte al nodo encontrado.
         return NULL;
     }
 
-    
+Para verificar que su código esté correcto puede ejecutar el siguiente test:
+
+    gcc test.c; .\a.exe search
+
+
 3.- Implemente la función void insertTreeMap(TreeMap * tree, void* key, void * value). Esta función inserta un nuevo dato (key,value) en el árbol y hace que el current apunte al nuevo nodo.
 Para insertar un dato, primero debe realizar una búsqueda para encontrar donde debería ubicarse. Luego crear el nuevo nodo y enlazarlo. Si la clave del dato ya existe retorne sin hacer nada (recuerde que el mapa no permite claves repetidas).
    
@@ -134,6 +142,11 @@ Para insertar un dato, primero debe realizar una búsqueda para encontrar donde 
 
 
     }
+
+Para verificar que su código esté correcto puede ejecutar el siguiente test:
+
+    gcc test.c; .\a.exe insert
+
 
 4.- Implemente la función TreeNode * minimum(TreeNode * x). Esta función retorna el **nodo con la mínima clave** ubicado en el subárbol con raiz x. Para obtener el nodo tiene que, a partir del nodo x, irse por la rama izquierda hasta llegar al final del subárbol. Si x no tiene hijo izquierdo se retorna el mismo nodo.
    
@@ -162,6 +175,11 @@ La función removeNode será usada por la función *eraseTreeMap* para eliminar 
         removeNode(tree, node);
     } 
 
+Para verificar que su código esté correcto puede ejecutar el siguiente test:
+
+    gcc test.c; .\a.exe erase
+
+
 6.- Implemente las funciones para recorrer la estructura: void* firstTreeMap(TreeMap* tree) retorna el primer **valor** del mapa (el menor). void* nextTreeMap(TreeMap* tree)  retornar el siguiente **valor** del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
 
     void * firstTreeMap(TreeMap * tree) {
@@ -176,6 +194,13 @@ La función removeNode será usada por la función *eraseTreeMap* para eliminar 
         return NULL;
     }
 
+Para verificar que su código esté correcto puede ejecutar el siguiente test:
+
+    gcc test.c; .\a.exe first
+    gcc test.c; .\a.exe next
+
+
+
 7.- La función void* upperBound(TreeMap* tree, void* key) retorna el **valor** con clave igual a key. En caso de no encontrarlo retorna el primer valor asociado a una clave mayor o igual a key. 
 Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo auxiliar $ub\_node$ que vaya guardando el nodo con la menor clave *mayor o igual a key*. Finalmente retorne el valor del nodo $ub\_node$.
 
@@ -183,4 +208,8 @@ Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo 
         
 
     }
+
+Para verificar que su código esté correcto puede ejecutar el siguiente test:
+
+    gcc test.c; .\a.exe ub
 
