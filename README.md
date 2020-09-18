@@ -224,6 +224,7 @@ Ahora ya puede comenzar a utilizar su mapa. Para partir puede crear un archivo *
     #include <string.h>
     #include "treemap.h"
 
+    /* Función para comparar claves de tipo string */
     int lower_than_string(void* key1, void* key2){
         char* k1=(char*) key1;
         char* k2=(char*) key2;
@@ -251,7 +252,7 @@ Ahora ya puede comenzar a utilizar su mapa. Para partir puede crear un archivo *
 
 Luego para compilar y ejecutar:
 
-    gcc main.c treemap-answer.c
+    gcc main.c treemap.c
     .\a.exe 
 
 Y voilá!
