@@ -64,3 +64,8 @@ vi., 18 de sep. de 2020 23:35:08:
 7. UpperBound
 Seleccione una opcion [1 - 7]vi., 18 de sep. de 2020 23:35:49: 
  tests: 1 ok, 7 failed
+a080c72
+bash: C:\Users\Dell\Documents\Labs\treemap\test.sh: line 42: syntax error near unexpected token `}'
+bash: C:\Users\Dell\Documents\Labs\treemap\test.sh: line 42: `} >&3'
+vi., 18 de sep. de 2020 23:36:54: 
+ tests: 1 ok, 7 failed
