@@ -20,7 +20,7 @@ git push &> /dev/null
 
 
 #clear
-echo " Que funcionalidad desea testear?" &>1
+echo " Que funcionalidad desea testear?" >&1
 echo "1. Create"
 echo "2. Insert"
 echo "3. Search"
