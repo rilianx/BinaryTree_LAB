@@ -8,3 +8,6 @@ vi., 18 de sep. de 2020 23:28:05:
 bash: C:\Users\Dell\Documents\Labs\treemap\test.sh: line 29: syntax error near unexpected token `&'
 bash: C:\Users\Dell\Documents\Labs\treemap\test.sh: line 29: `echo "$(date): " &>&2'
  tests: 1 ok, 7 failed
+9c04c86
+vi., 18 de sep. de 2020 23:30:38: 
+ tests: 1 ok, 7 failed
