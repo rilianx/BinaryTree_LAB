@@ -19,8 +19,8 @@ git push &> /dev/null
 
 
 
-clear
-echo " Que funcionalidad desea testear?"
+#clear
+echo " Que funcionalidad desea testear?" &>2
 echo "1. Create"
 echo "2. Insert"
 echo "3. Search"

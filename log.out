@@ -11,3 +11,14 @@ bash: C:\Users\Dell\Documents\Labs\treemap\test.sh: line 29: `echo "$(date): " &
 9c04c86
 vi., 18 de sep. de 2020 23:30:38: 
  tests: 1 ok, 7 failed
+4e56f71
+[H[2J[3J Que funcionalidad desea testear?
+1. Create
+2. Insert
+3. Search
+4. Erase
+5. First
+6. Next
+7. UpperBound
+Seleccione una opcion [1 - 7]vi., 18 de sep. de 2020 23:31:26: 
+ tests: 1 ok, 7 failed
