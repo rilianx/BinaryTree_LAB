@@ -338,7 +338,7 @@ void ub_test1(TreeMap* tree){ //el dato existe
     }
 
     if(aux->id != 6980){
-        sprintf(msg,"upperbound de 6980 retorna %d",j,aux->id);
+        sprintf(msg,"upperbound de 6980 retorna %d",aux->id);
         err_msg(msg);
     }else{
         sprintf(msg,"upperbound de %d retorna %d",j,aux->id);
