@@ -18,8 +18,6 @@ git rev-parse --short HEAD
 git push &> /dev/null
 
 
-
-clear
 echo " Que funcionalidad desea testear?" >&3
 echo "1. Create" >&3
 echo "2. Insert" >&3
