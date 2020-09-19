@@ -18,9 +18,9 @@ git rev-parse --short HEAD
 git push &> /dev/null
 
 
-
-#clear
-echo " Que funcionalidad desea testear?" >&3
+{
+clear
+echo " Que funcionalidad desea testear?" 
 echo "1. Create"
 echo "2. Insert"
 echo "3. Search"
@@ -39,7 +39,7 @@ case $opcion in
 6) ./a.out next;;
 7) ./a.out ub;;
 *) echo "$opc es una opcion invalida?";;
-
+} >&3
 
 
 

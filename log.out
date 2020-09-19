@@ -54,3 +54,13 @@ b934740
 Seleccione una opcion [1 - 7]bash: C:\Users\Dell\Documents\Labs\treemap\test.sh: line 46: syntax error: unexpected end of file
 vi., 18 de sep. de 2020 23:35:08: 
  tests: 1 ok, 7 failed
+35a60e2
+1. Create
+2. Insert
+3. Search
+4. Erase
+5. First
+6. Next
+7. UpperBound
+Seleccione una opcion [1 - 7]vi., 18 de sep. de 2020 23:35:49: 
+ tests: 1 ok, 7 failed
