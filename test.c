@@ -1,13 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <execinfo.h>
-#include <sys/wait.h>
-#include <unistd.h>
 #include "treemap.c"
-
-#define MAX_STACK_LEVELS 50
-
 
 char * _strdup(const char * str) {
     char * aux = (char *)malloc(strlen(str) + 1);
