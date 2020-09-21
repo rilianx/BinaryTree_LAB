@@ -17,7 +17,7 @@ En este laboratorio implementaremos un **mapa ordenado**. Para ello usaremos la 
         int (*lower_than) (void* key1, void* key2);
     };
 
-![image](treemap.png)
+![image](images/treemap.png)
 
 Como se pueden dar cuenta, los nodos del árbol incluyen los elementos/pares que almacenará la estructura (key, value). La clave (key) es void* por lo que puede ser un puntero a cualquier tipo de dato.
 
@@ -99,7 +99,7 @@ Además se usa un árbol como el de la figura (sólo se muestran las claves) ini
     tree->root->left=createTreeNode(&p->id, p);
     tree->root->left->parent=tree->root;
 
-![image](treesearch.png)
+![image](images/treesearch.png)
 
 Las pruebas/tests se encuentran en el archivo *test.c*
 
