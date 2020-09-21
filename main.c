@@ -5,6 +5,12 @@
 
 //Ejemplo de uso de mapa
 
+char * _strdup(const char * str) {
+    char * aux = (char *)malloc(strlen(str) + 1);
+    strcpy(aux, str);
+    return aux;
+}
+
 int lower_than_string(void* key1, void* key2){
     char* k1=(char*) key1;
     char* k2=(char*) key2;
