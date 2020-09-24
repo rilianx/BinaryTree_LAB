@@ -9,8 +9,14 @@ char * _strdup(const char * str) {
     return aux;
 }
 
-char msg[100];
+char msg[300];
 int test_id = -1;
+
+
+int success(){
+  printf("SUCCESS\n");
+  exit(0);
+}
 
 void err_msg(char* msg){
     //if(test_id!=-1) return;
@@ -29,7 +35,6 @@ void info_msg(char* msg){
     //if(test_id!=-1) return;
     printf ("   [ INFO ] %s\n",msg);
 }
-
 
 typedef struct{
    int id;
@@ -212,6 +217,45 @@ int insert_test2(){
         ok_msg("current actualizado correctamente");
 
   return 1;
+}
+
+int minimum_test(){
+    TreeMap * tree = initializeTree();
+    TreeNode* n = minimum(tree->root);
+    if(!n) {
+        err_msg("minimum(root) retorna NULL");
+        return 0;
+    }
+    
+    
+    if ( *((int*) n->key) != 1273){
+        sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 1273)",*((int*) n->key));
+        err_msg(msg);
+        return 0;
+    }
+    ok_msg("minimum retorna el nodo con clave 1273");
+
+    n = minimum(tree->root->left);
+    if(!n) {
+        err_msg("minimum(root->left) retorn NULL (debería retornar 1273)");
+        return 0;
+    }
+
+    info_msg("agregando nodo con clave 100");
+    Palabra* p=creaPalabra(100,"first_word");
+    tree->root->left->left=createTreeNode(&p->id, p);
+    tree->root->left->left->parent=tree->root->left;
+
+    n = minimum(tree->root);
+    if ( *((int*) n->key) != 100){
+        sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 100)",*((int*) n->key));
+        err_msg(msg);
+        return 0;
+    }
+
+    ok_msg("minimum retorna el nodo con clave 100");
+    return 1;
+
 }
 
 int erase_test1(){//nodo sin hijos
@@ -453,10 +497,6 @@ int ub_test4(TreeMap* tree){
     
 }
 
-int success(){
-  printf("SUCCESS\n");
-  exit(0);
-}
 
 int main( int argc, char *argv[] ) {
     TreeMap * tree;
@@ -493,16 +533,19 @@ int main( int argc, char *argv[] ) {
       score=0;
       printf("\nTest insertTreeMap...\n");
       tree = initializeTree();
-      all_correct &=insert_test1(tree)&&
+      all_correct &= insert_test1(tree)&&
       insert_test2()&&
       (score+=10) && (test_id!=2 || success());
       printf("   partial_score: %d/10\n", score); 
       total_score+=score;  
     } 
 
+    printf("\nTest minimum...\n");
+      all_correct &=minimum_test();
+
     if(test_id==-1 || (test_id>=3 && test_id<=5)){
       score=0;
-      printf("\nTest eraseTreeMap...\n");
+      printf("\nTest removeNode...\n");
       all_correct &=erase_test1()&&
       (score+=5)&& (test_id!=3 || success()) &&
       erase_test2()&&
