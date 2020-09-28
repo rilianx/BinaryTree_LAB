@@ -165,7 +165,7 @@ Para insertar un dato, primero debe realizar una búsqueda para encontrar donde 
 5.- Implemente la función void removeNode(TreeMap * tree, TreeNode* node). Esta función elimina el nodo *node* del árbol *tree*. Recuerde que para eliminar un node existen 3 casos:
 **Nodo sin hijos:** Se anula el puntero del padre que apuntaba al nodo
 **Nodo con un hijo:** El padre del nodo pasa a ser padre de su hijo
-**Nodo con dos hijos:** Descienda al hijo izquierdo y obtenga el menor nodo del subárbol (con la función minimum). Reemplace los datos (key,value) de *node* con los del nodo "minimum". Elimine el nodo minimum (llame a la misma función *removeNode*).
+**Nodo con dos hijos:** Descienda al hijo izquierdo y obtenga el menor nodo del subárbol (con la función minimum). Reemplace los datos (key,value) de *node* con los del nodo "minimum". Elimine el nodo minimum (para hacerlo puede usar la misma función *removeNode*).
 
     void removeNode(TreeMap * tree, TreeNode* node) {
 
@@ -206,7 +206,7 @@ Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo 
     }
 
 
-Ahora ya puede comenzar a utilizar su mapa. Para partir puede crear un archivo *main.c* con un código como el siguiente:
+Ya puede comenzar a utilizar su mapa! Para partir puede crear un archivo *main.c* con un código como el siguiente:
 
     #include <stdio.h>
     #include <stdlib.h>
