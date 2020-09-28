@@ -22,7 +22,8 @@ int lower_than_string(void* key1, void* key2){
 int main(){
     TreeMap* map = createTreeMap(lower_than_string);
 
-    char words[9][5] = {"saco","cese","case","cosa","casa","cesa","cose","seco","saca"};
+    char words[9][5] = {"saco","cese","case","cosa","casa","cesa",
+    "cose","seco","saca"};
 
     int i=0;
     for(;i<9; i++){
