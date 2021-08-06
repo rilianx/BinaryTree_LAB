@@ -22,9 +22,13 @@ Reemplace `{login}` y `{pass}` por su login y contraseña de usuario github. `{r
 
 En este laboratorio implementaremos un **mapa ordenado**. Para ello usaremos la siguiente estructura (árbol binario de búsqueda):
 
-    struct TreeNode {
-        void* key;
+    typedef struct Pair {
+        void * key;
         void * value;
+    } Pair;
+
+    struct TreeNode {
+        Pair* pair
         TreeNode * left;
         TreeNode * right;
         TreeNode * parent;
@@ -38,7 +42,7 @@ En este laboratorio implementaremos un **mapa ordenado**. Para ello usaremos la 
 
 ![image](images/treemap.png)
 
-Como se pueden dar cuenta, los nodos del árbol incluyen los elementos/pares que almacenará la estructura (key, value). La clave (key) es void* por lo que puede ser un puntero a cualquier tipo de dato.
+Como se pueden dar cuenta, los nodos del árbol incluyen un tipo de dato **Pair** que almacenan los pares (key, value). La clave (key) es void* por lo que puede ser un puntero a cualquier tipo de dato.
 
 El árbol binario de búsqueda *ordena los datos usando las claves*, por lo tanto necesita una función para comparar claves. Esta función se incluye en la estructura y se inicializará al momento de crear el TreeMap. La función se incluye de esta manera:
 
@@ -68,9 +72,10 @@ Puede usar la siguiente función para crear nodos del árbol.
 
     TreeNode* createTreeNode(void* key, void * value) {
         TreeNode * new = (TreeNode *)malloc(sizeof(TreeNode));
+        Pair * pair = (Pair*) malloc (sizeof(Pair));
         if (new == NULL) return NULL;
-        new->key = key;
-        new->value = value;
+        new->pair->key = key;
+        new->pair->value = value;
         new->parent = new->left = new->right = NULL;
         return new;
     }
@@ -136,10 +141,10 @@ El siguiente código muestra como inicializar la función de comparación. Reser
     }
 
 
-2.- Implemente la función void* searchTreeMap(TreeMap* tree, void* key), la cual busca el nodo con clave igual a key y retorna el **valor** asociado al nodo. Si no se encuentra la clave retorna NULL.
+2.- Implemente la función Pair* searchTreeMap(TreeMap* tree, void* key), la cual busca el nodo con clave igual a key y retorna el **Pair** asociado al nodo. Si no se encuentra la clave retorna NULL.
 Recuerde hacer que el current apunte al nodo encontrado.
 
-    void* searchTreeMap(TreeMap* tree, void* key) {
+    Pair* searchTreeMap(TreeMap* tree, void* key) {
 
 
         return NULL;
@@ -184,23 +189,23 @@ La función removeNode será usada por la función *eraseTreeMap* para eliminar 
     } 
 
 
-6.- Implemente las funciones para recorrer la estructura: void* firstTreeMap(TreeMap* tree) retorna el primer **valor** del mapa (el menor). void* nextTreeMap(TreeMap* tree)  retornar el siguiente **valor** del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
+6.- Implemente las funciones para recorrer la estructura: Pair* firstTreeMap(TreeMap* tree) retorna el primer **Pair** del mapa (el menor). Pair* nextTreeMap(TreeMap* tree)  retornar el siguiente **Pair** del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
 
-    void * firstTreeMap(TreeMap * tree) {
+    Pair * firstTreeMap(TreeMap * tree) {
         
 
         return NULL;
     }
 
-    void * nextTreeMap(TreeMap * tree) {
+    Pair * nextTreeMap(TreeMap * tree) {
        
 
         return NULL;
     }
 
 
-7.- La función void* upperBound(TreeMap* tree, void* key) retorna el **valor** con clave igual a key. En caso de no encontrarlo retorna el primer valor asociado a una clave mayor o igual a key. 
-Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo auxiliar ub_node que vaya guardando el nodo con la menor clave *mayor o igual a key*. Finalmente retorne el valor del nodo ub\_node.
+7.- La función Pair* upperBound(TreeMap* tree, void* key) retorna el **Pair** con clave igual a key. En caso de no encontrarlo retorna el primer par asociado a una clave mayor o igual a key. 
+Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo auxiliar ub_node que vaya guardando el nodo con la menor clave *mayor o igual a key*. Finalmente retorne el par del nodo ub\_node.
 
     void* upperBound(TreeMap* tree, void* key){
         
@@ -233,9 +238,9 @@ Ya puede comenzar a utilizar su mapa! Para partir puede crear un archivo *main.c
             insertTreeMap(map,_strdup(words[i]),_strdup(words[i]));
         }
 
-        char* aux= firstTreeMap(map);
+        Pair* aux= firstTreeMap(map);
         while(aux!=NULL){
-            printf("%s\n", aux);
+            printf("%s\n", aux->value);
             aux=nextTreeMap(map);
         }
 
