@@ -207,7 +207,7 @@ La función removeNode será usada por la función *eraseTreeMap* para eliminar 
 7.- La función Pair* upperBound(TreeMap* tree, void* key) retorna el **Pair** con clave igual a key. En caso de no encontrarlo retorna el primer par asociado a una clave mayor o igual a key. 
 Para implementarla puede realizar una búsqueda normal y usar un puntero a nodo auxiliar ub_node que vaya guardando el nodo con la menor clave *mayor o igual a key*. Finalmente retorne el par del nodo ub\_node.
 
-    void* upperBound(TreeMap* tree, void* key){
+    Pair* upperBound(TreeMap* tree, void* key){
         
 
     }
