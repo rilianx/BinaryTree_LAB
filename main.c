@@ -30,9 +30,9 @@ int main(){
         insertTreeMap(map,_strdup(words[i]),_strdup(words[i]));
     }
 
-    char* aux= firstTreeMap(map);
+    Pair* aux= firstTreeMap(map);
     while(aux!=NULL){
-        printf("%s\n", aux);
+        printf("%s\n", aux->value);
         aux=nextTreeMap(map);
     }
 

@@ -5,9 +5,9 @@
 
 typedef struct TreeNode TreeNode;
 
+
 struct TreeNode {
-    void* key;
-    void * value;
+    Pair* pair;
     TreeNode * left;
     TreeNode * right;
     TreeNode * parent;
@@ -29,8 +29,9 @@ int is_equal(TreeMap* tree, void* key1, void* key2){
 TreeNode * createTreeNode(void* key, void * value) {
     TreeNode * new = (TreeNode *)malloc(sizeof(TreeNode));
     if (new == NULL) return NULL;
-    new->key = key;
-    new->value = value;
+    new->pair = (Pair *)malloc(sizeof(Pair));
+    new->pair->key = key;
+    new->pair->value = value;
     new->parent = new->left = new->right = NULL;
     return new;
 }
@@ -68,19 +69,19 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 
 
-void * searchTreeMap(TreeMap * tree, void* key) {
+Pair * searchTreeMap(TreeMap * tree, void* key) {
     return NULL;
 }
 
 
-void * upperBound(TreeMap * tree, void* key) {
+Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;
 }
 
-void * firstTreeMap(TreeMap * tree) {
+Pair * firstTreeMap(TreeMap * tree) {
     return NULL;
 }
 
-void * nextTreeMap(TreeMap * tree) {
+Pair * nextTreeMap(TreeMap * tree) {
     return NULL;
 }

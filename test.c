@@ -100,8 +100,9 @@ int create_test1(){
 
 int search_test1(TreeMap* tree){ //key se encuentra en raiz
     int key=5239;
-    Palabra* pal = searchTreeMap(tree, &key);
-    if(pal!=NULL && pal->id==5239)
+    
+    Pair* p=searchTreeMap(tree, &key);
+    if(p!=NULL && ((Palabra*)p->value)->id==5239)
         ok_msg("encuentra dato con clave 5239");
     else{
         err_msg("no encuentra dato con clave 5239");
@@ -118,8 +119,8 @@ int search_test1(TreeMap* tree){ //key se encuentra en raiz
 
 int search_test2(TreeMap* tree){ //key en root->right
     int key=8213;
-    Palabra* pal = searchTreeMap(tree, &key);
-    if(pal!=NULL && pal->id==8213)
+    Pair* p = searchTreeMap(tree, &key);
+    if(p!=NULL && ((Palabra*)p->value)->id==8213)
         ok_msg("encuentra dato con clave 8213");
     else{
         err_msg("no encuentra dato con clave 8213");
@@ -137,8 +138,8 @@ int search_test2(TreeMap* tree){ //key en root->right
 
 int search_test3(TreeMap* tree){ //key en root->right->left
     int key=6980;
-    Palabra* pal = searchTreeMap(tree, &key);
-    if(pal!=NULL && pal->id==key){
+    Pair* p = searchTreeMap(tree, &key);
+    if(p!=NULL && ((Palabra*)p->value)->id==key){
         sprintf(msg, "encuentra dato con clave %d",key);
         ok_msg(msg);
     }else{
@@ -157,9 +158,9 @@ int search_test3(TreeMap* tree){ //key en root->right->left
 
 int search_test4(TreeMap* tree){ //key no existe
     int key=7010;
-    Palabra* pal = searchTreeMap(tree, &key);
+    Pair* p = searchTreeMap(tree, &key);
     
-    if(pal==NULL) {
+    if(p==NULL) {
         sprintf(msg, "retorna NULL: search(key=%d)",key);
         ok_msg(msg);
     }else{
@@ -192,14 +193,14 @@ int insert_test2(){
     
 
     if(tree->root->left->left == NULL ||
-           tree->root->left->left->value!=p) {
+           tree->root->left->left->pair->value!=p) {
         err_msg("dato insertado no se encuentra en root->left->left");
         return 0;
     }else
         ok_msg("dato insertado correctamente");
     
     if(tree->root->left->left != NULL &&
-            tree->root->left->left->key!=&p->id) {
+            (int*)tree->root->left->left->pair->key!=&p->id) {
                 err_msg("clave de dato no se guarda correctamente");
                 return 0;
             }
@@ -228,8 +229,8 @@ int minimum_test(){
     }
     
     
-    if ( *((int*) n->key) != 1273){
-        sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 1273)",*((int*) n->key));
+    if ( *((int*) n->pair->key) != 1273){
+        sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 1273)",*((int*) n->pair->key));
         err_msg(msg);
         return 0;
     }
@@ -247,8 +248,8 @@ int minimum_test(){
     tree->root->left->left->parent=tree->root->left;
 
     n = minimum(tree->root);
-    if ( *((int*) n->key) != 100){
-        sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 100)",*((int*) n->key));
+    if ( *((int*) n->pair->key) != 100){
+        sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 100)",*((int*) n->pair->key));
         err_msg(msg);
         return 0;
     }
@@ -279,7 +280,7 @@ int erase_test2(){//nodo con un hijo
     info_msg("eliminando dato con clave 8213 (nodo con un hijo)");
     eraseTreeMap(tree, &key);
 
-    if( * ((int*) tree->root->right->key) != 6980) {
+    if( * ((int*) tree->root->right->pair->key) != 6980) {
         err_msg("el dato no se elimino correctamente root->right!=6980");
         return 0;
     }
@@ -300,12 +301,12 @@ int erase_test3(){//nodo con dos hijos
     info_msg("eliminando dato con clave 5239 (nodo con dos hijos)");
     eraseTreeMap(tree, &key);
 
-    if( * ((int*) tree->root->key) != 6980){
+    if( * ((int*) tree->root->pair->key) != 6980){
         err_msg("el dato no se elimino correctamente root!=6980");
         return 0;
     }
 
-    if( * ((int*) tree->root->right->key) != 8213){
+    if( * ((int*) tree->root->right->pair->key) != 8213){
         err_msg("el dato no se elimino correctamente root->right!=8213");
         return 0;
     }else
@@ -314,13 +315,13 @@ int erase_test3(){//nodo con dos hijos
 }
 
 int first_test1(TreeMap * tree){ 
-    Palabra* aux=firstTreeMap(tree);
+    Pair* aux=firstTreeMap(tree);
     if(!aux){
         err_msg("first retorna NULL");
         return 0;
     }
 
-    if(aux->id != 1273){
+    if( ((Palabra*)aux->value)->id != 1273){
         err_msg("first no retorna nodo 1273");
         return 0;
     }else
@@ -336,8 +337,9 @@ int first_test2(){ //debes iterar
     tree->root->left->left=createTreeNode(&p->id, p);
     tree->root->left->left->parent=tree->root->left;
 
-    Palabra* aux=firstTreeMap(tree);
-    if(aux->id != 100){
+    Pair* pair=firstTreeMap(tree);
+
+    if(pair == NULL || ((Palabra*)pair->value)->id != 100){
         err_msg("first no retorna nodo 100");
         return 0;
     }else
@@ -355,14 +357,14 @@ int next_test1(){ //caso1: current tiene hijo derecho
 
     info_msg("actualizando current -> nodo 1273");
     tree->current = tree->root->left;
-    Palabra* aux=nextTreeMap(tree);
+    Pair* aux=nextTreeMap(tree);
 
     if(aux==NULL) {
       err_msg("next retorna NULL");
       return 0;
     }
 
-     if(aux->id != 2000){
+     if(((Palabra*)aux->value)->id != 2000){
         err_msg("next no retorna nodo 2000");
         return 0;
      }else
@@ -375,9 +377,9 @@ int next_test2(){ //caso1: current tiene hijo derecho
     TreeMap * tree = initializeTree();
     info_msg("actualizando current -> root");
     tree->current = tree->root;
-    Palabra* aux=nextTreeMap(tree);
+    Pair* aux=nextTreeMap(tree);
 
-     if(aux->id != 6980){
+     if(aux==NULL || ((Palabra*)aux->value)->id != 6980){
         err_msg("next no retorna nodo 6980");
         return 0;
      }else
@@ -385,7 +387,7 @@ int next_test2(){ //caso1: current tiene hijo derecho
     
     aux=nextTreeMap(tree);
     
-    if(aux->id != 8213){
+    if(aux==NULL || ((Palabra*)aux->value)->id != 8213){
         err_msg("next no retorna nodo 8213");
         return 0;
     }else
@@ -409,9 +411,9 @@ int next_test3(){ //caso2: current sin hijo derecho
     info_msg("actualizando current -> nodo 2000");
     tree->current=tree->root->left->right;
 
-    Palabra* aux=nextTreeMap(tree);
+    Pair* aux=nextTreeMap(tree);
     
-    if(aux->id != 5239){
+    if(aux==NULL || ((Palabra*)aux->value)->id != 5239){
         err_msg("next no retorna nodo 5239\n");
         return 0;
     }else
@@ -422,19 +424,19 @@ int next_test3(){ //caso2: current sin hijo derecho
 
 int ub_test1(TreeMap* tree){ //el dato existe
     int j=6980;
-    Palabra* aux=upperBound(tree, &j);
+    Pair* aux=upperBound(tree, &j);
 
     if(aux==NULL) {
         err_msg("upperbound de 6980 retorna NULL");
         return 0;
     }
 
-    if(aux->id != 6980){
-        sprintf(msg,"upperbound de 6980 retorna %d",aux->id);
+    if(((Palabra*)aux->value)->id != 6980){
+        sprintf(msg,"upperbound de 6980 retorna %d",((Palabra*)aux->value)->id);
         err_msg(msg);
         return 0;
     }else{
-        sprintf(msg,"upperbound de %d retorna %d",j,aux->id);
+        sprintf(msg,"upperbound de %d retorna %d",j,((Palabra*)aux->value)->id);
         ok_msg(msg);
     }
     return 1;
@@ -442,7 +444,7 @@ int ub_test1(TreeMap* tree){ //el dato existe
 
 int ub_test2(TreeMap* tree){ 
     int j=6979;
-    Palabra* aux=upperBound(tree, &j);
+    Pair* aux=upperBound(tree, &j);
 
     if(aux==NULL) {
         sprintf(msg,"upperbound de %d retorna NULL",j);
@@ -450,12 +452,12 @@ int ub_test2(TreeMap* tree){
         return 0;
     }
 
-    if(aux->id != 6980){
-        sprintf(msg,"upperbound de %d retorna %d",j,aux->id);
+    if(((Palabra*)aux->value)->id != 6980){
+        sprintf(msg,"upperbound de %d retorna %d",j,((Palabra*)aux->value)->id);
         err_msg(msg);
         return 0;
     }else{
-        sprintf(msg,"upperbound de %d retorna %d",j,aux->id);
+        sprintf(msg,"upperbound de %d retorna %d",j,((Palabra*)aux->value)->id);
         ok_msg(msg);
     }
     return 1;
@@ -463,7 +465,7 @@ int ub_test2(TreeMap* tree){
 
 int ub_test3(TreeMap* tree){
     int j=6981;
-    Palabra* aux=upperBound(tree, &j);
+    Pair* aux=upperBound(tree, &j);
 
     if(aux==NULL) {
         sprintf(msg,"upperbound de %d retorna NULL",j);
@@ -471,12 +473,12 @@ int ub_test3(TreeMap* tree){
         return 0;
     }
 
-    if(aux->id != 8213){
-        sprintf(msg,"upperbound de %d retorna %d\n",j,aux->id);
+    if(((Palabra*)aux->value)->id != 8213){
+        sprintf(msg,"upperbound de %d retorna %d\n",j,((Palabra*)aux->value)->id);
         err_msg(msg);
         return 0;
     }else{
-        sprintf(msg,"upperbound de %d retorna %d",j,aux->id);
+        sprintf(msg,"upperbound de %d retorna %d",j,((Palabra*)aux->value)->id);
         ok_msg(msg);
     }
     return 1;
@@ -484,7 +486,7 @@ int ub_test3(TreeMap* tree){
 
 int ub_test4(TreeMap* tree){ 
     int j=8214;
-    Palabra* aux=upperBound(tree, &j);
+    Pair* aux=upperBound(tree, &j);
 
     if(aux!=NULL) {
         sprintf(msg,"upperbound de %d retorna NULL",j);
