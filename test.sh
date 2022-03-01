@@ -7,6 +7,9 @@
 target_file="treemap.c"
 testcode="test.c"
 
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
 #Verifca si se realizaron cambios 
 CHANGED=$(git diff --ignore-space-at-eol -b -w --ignore-blank-lines $target_file)
 
