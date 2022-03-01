@@ -20,14 +20,14 @@ int success(){
 
 void err_msg(char* msg){
     //if(test_id!=-1) return;
-    printf("   [\033[31m FAILED \033[0m] ");
+    printf("   [FAILED] ");
     printf("%s\n",msg);
     //print_trace();
 }
 
 void ok_msg(char* msg){
     //if(test_id!=-1) return;
-    printf ("   [\033[32;1m OK \033[0m] ");
+    printf ("   [OK] ");
     printf("%s\n",msg);
 }
 
