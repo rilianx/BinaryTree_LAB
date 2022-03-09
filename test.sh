@@ -64,7 +64,7 @@ if ./a.out &> /dev/null ; then
 
 else
   echo "Errors in execution =O" >&3
-  gcc -g $testcode >&3
+  gcc -g $testcode -o a.out >&3
   gdb -silent -ex='set disable-randomization off' -ex='set confirm off' -ex='run' -ex=quit a.out >&3
 
 fi
