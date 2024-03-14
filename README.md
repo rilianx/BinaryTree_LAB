@@ -6,13 +6,11 @@ Implementando un Mapa Ordenado (TreeMap)
 ---
 **Antes de comenzar**
 
-* Abra el Visual Studio Code y abra una nueva ventana
-* En el explorador ponga la opción para clonar repositorio y clone **este repositorio**
+* Importe el repositorio desde su cuenta en repl.it (si no tiene siga [este tutorial](https://chartreuse-goal-d5c.notion.site/C-mo-comenzar-con-los-labs-b4dd8c7abc5a425d8f25e2eaa060e5b5?pvs=4))
 * Sólo puede modificar los archivos *treemap.c* y *main.c*
-* Para testear sus códigos debe abrir un terminal *git bash* y ejecutar el comando `./test.sh`
-* Verifique que sus cambios se hayan subido al repositorio en github
-* No está permitido usar comandos de git (a menos que el profesor lo indique)
-
+* Para testear sus códigos debe abrir un terminal (shell) y ejecutar el comando `./test.sh`
+* Verifique que sus cambios se hayan subido a este repositorio
+* **No está permitido usar comandos de git** (a menos que el profesor o ayudantes lo indiquen)
 ---
 
 
