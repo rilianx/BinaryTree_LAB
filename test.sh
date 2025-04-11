@@ -4,7 +4,7 @@
 
 # Everything below will go to the file 'log':
 
-target_file="list.c"
+target_file="treemap.c"
 testcode="test.c"
 
 git config --global user.email "you@example.com"
